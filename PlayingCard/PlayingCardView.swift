@@ -10,9 +10,9 @@ import UIKit
 
 class PlayingCardView: UIView {
     
-    var rank = 9 { didSet { setNeedsDisplay() }}
-    var suit = "♥︎" { didSet { setNeedsDisplay() }}
-    var isFaceUp = true { didSet { setNeedsDisplay() }}
+    var rank = 9 { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    var suit = "♥︎" { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    var isFaceUp = true { didSet { setNeedsDisplay(); setNeedsLayout() }}
     
     private var corneredString: NSAttributedString {
         return centeredAttributedString(string: rankString + "\n" + suit, fontSize: cornerFontSize)
