@@ -36,10 +36,27 @@ class PlayingCardView: UIView {
         label.isHidden = !isFaceUp
     }
     
-    // after setNeedsLayout() is called, this will be triggered eventually
+    // if user changes font size from settings, the app detects the change immediately and redraws
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsDisplay()
+        setNeedsLayout()
+    }
+    
+    // it is the equivalent of draw() for setNeedsLayout
     override func layoutSubviews() {
+        super.layoutSubviews()
         configureCornerLabel(topLeftCornerLabel)
+        configureCornerLabel(botLeftCornerLabel)
+        
         topLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
+        
+        botLeftCornerLabel.transform = CGAffineTransform.identity
+            .translatedBy(x: botLeftCornerLabel.bounds.width, y: botLeftCornerLabel.bounds.height)
+            .rotated(by: CGFloat.pi)
+        
+        botLeftCornerLabel.frame.origin = CGPoint(x: bounds.maxX, y: bounds.maxY)
+            .offsetBy(dx: -cornerOffset, dy: -cornerOffset)
+            .offsetBy(dx: -botLeftCornerLabel.bounds.width, dy: -botLeftCornerLabel.bounds.height)
     }
     
     private func centeredAttributedString(string: String, fontSize: CGFloat) -> NSAttributedString {
@@ -57,6 +74,7 @@ class PlayingCardView: UIView {
     }
 }
 
+// helpers
 extension PlayingCardView {
     private struct SizeRatio {
         static let cornerFontSizeToBoundsHeight: CGFloat = 0.085
