@@ -18,6 +18,30 @@ class PlayingCardView: UIView {
         return centeredAttributedString(string: rankString + "\n" + suit, fontSize: cornerFontSize)
     }
     
+    private lazy var topLeftCornerLabel = createCornerLabel()
+    private lazy var botLeftCornerLabel = createCornerLabel()
+    
+    private func createCornerLabel() -> UILabel {
+        let label = UILabel()
+        label.numberOfLines = 0
+        // it's just a Swift structure for now that abstractly exists - add it to the view
+        addSubview(label)
+        return label
+    }
+    
+    private func configureCornerLabel(_ label: UILabel) {
+        label.attributedText = corneredString
+        label.frame.size = CGSize.zero // a trick, without it sizeToFit() doesn't always work properly
+        label.sizeToFit()
+        label.isHidden = !isFaceUp
+    }
+    
+    // after setNeedsLayout() is called, this will be triggered eventually
+    override func layoutSubviews() {
+        configureCornerLabel(topLeftCornerLabel)
+        topLeftCornerLabel.frame.origin = bounds.origin.offsetBy(dx: cornerOffset, dy: cornerOffset)
+    }
+    
     private func centeredAttributedString(string: String, fontSize: CGFloat) -> NSAttributedString {
         var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
         font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
