@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,16 +20,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mPP-le-n4Y" customClass="PlayingCardView" customModule="PlayingCard" customModuleProvider="target">
-                                <rect key="frame" x="24" y="64" width="328" height="707"/>
+                                <rect key="frame" x="24" y="148.66666666666669" width="328" height="524.66666666666652"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mPP-le-n4Y" secondAttribute="height" multiplier="5:8" id="4hB-ig-olf"/>
+                                    <constraint firstAttribute="width" priority="750" constant="800" id="Odj-kg-nkW"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mPP-le-n4Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="3Lf-7u-rDa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mPP-le-n4Y" secondAttribute="bottom" constant="7" id="byW-hC-jO3"/>
-                            <constraint firstItem="mPP-le-n4Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jBm-VV-j5d"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mPP-le-n4Y" secondAttribute="trailing" constant="23" id="q2x-ln-nvg"/>
+                            <constraint firstItem="mPP-le-n4Y" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="3Lf-7u-rDa"/>
+                            <constraint firstItem="mPP-le-n4Y" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="C6w-A2-dgU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="mPP-le-n4Y" secondAttribute="bottom" constant="7" id="byW-hC-jO3"/>
+                            <constraint firstItem="mPP-le-n4Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="jBm-VV-j5d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mPP-le-n4Y" secondAttribute="trailing" constant="23" id="q2x-ln-nvg"/>
+                            <constraint firstItem="mPP-le-n4Y" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="vh9-23-oCN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
