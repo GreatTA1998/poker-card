@@ -12,6 +12,14 @@ class ViewController: UIViewController {
     
     var deck = PlayingCardDeck()
 
+    @IBAction func flipCard(_ sender: UITapGestureRecognizer) {
+        switch sender.state {
+        case .ended: playingCardView.isFaceUp = !playingCardView.isFaceUp
+        default: break
+        }
+    }
+    
+    // swipe left/right for prev/next card
     @IBOutlet weak var playingCardView: PlayingCardView! {
         didSet {
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
@@ -26,7 +34,6 @@ class ViewController: UIViewController {
             playingCardView.suit = card.suit.rawValue
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
