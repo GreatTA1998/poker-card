@@ -10,8 +10,8 @@ import UIKit
 
 class PlayingCardView: UIView {
     
-    var rank = 9 { didSet { setNeedsDisplay(); setNeedsLayout() }}
-    var suit = "♥︎" { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    var rank = 11 { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    var suit = "♥️" { didSet { setNeedsDisplay(); setNeedsLayout() }}
     var isFaceUp = true { didSet { setNeedsDisplay(); setNeedsLayout() }}
     
     private var corneredString: NSAttributedString {
@@ -71,6 +71,18 @@ class PlayingCardView: UIView {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         UIColor.white.setFill()
         roundedRect.fill()
+        
+        if isFaceUp {
+            print("card =", rankString+suit)
+            if let facedImage = UIImage(named: rankString+suit) {
+                facedImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
+            }
+        } else {
+            if let cardBackImage = UIImage(named: "cardback") {
+                cardBackImage.draw(in: bounds)
+            }
+        }
+       
     }
 }
 
