@@ -10,6 +10,14 @@ import UIKit
 
 class PlayingCardView: UIView {
     
+    var rank = 9 { didSet { setNeedsDisplay() }}
+    var suit = "♥︎" { didSet { setNeedsDisplay() }}
+    var isFaceUp = true { didSet { setNeedsDisplay() }}
+    
+    private var corneredString: NSAttributedString {
+        return centeredAttributedString(string: "9" + "\n" + "♥︎", fontSize: 16.0)
+    }
+    
     private func centeredAttributedString(string: String, fontSize: CGFloat) -> NSAttributedString {
         var font = UIFont.preferredFont(forTextStyle: .body).withSize(fontSize)
         font = UIFontMetrics(forTextStyle: .body).scaledFont(for: font)
