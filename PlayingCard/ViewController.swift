@@ -19,12 +19,17 @@ class ViewController: UIViewController {
         }
     }
     
-    // swipe left/right for prev/next card
+    // initialize gesture recognizers
     @IBOutlet weak var playingCardView: PlayingCardView! {
         didSet {
+            // swipe left/right for prev/next card
             let swipe = UISwipeGestureRecognizer(target: self, action: #selector(nextCard))
             swipe.direction = [.left, .right]
             playingCardView.addGestureRecognizer(swipe)
+            
+            // pinch to zoom
+            let pinch = UIPinchGestureRecognizer(target: playingCardView, action: #selector(playingCardView.adjustFaceCardScale(byHandlingGestureRecognizedBy:)))
+            playingCardView.addGestureRecognizer(pinch)
         }
     }
     
