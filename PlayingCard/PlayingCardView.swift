@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class PlayingCardView: UIView {
     
     var rank = 11 { didSet { setNeedsDisplay(); setNeedsLayout() }}
@@ -73,8 +74,7 @@ class PlayingCardView: UIView {
         roundedRect.fill()
         
         if isFaceUp {
-            print("card =", rankString+suit)
-            if let facedImage = UIImage(named: rankString+suit) {
+            if let facedImage = UIImage(named: rankString+suit, in: Bundle(for: self.classForCoder), compatibleWith: traitCollection) {
                 facedImage.draw(in: bounds.zoom(by: SizeRatio.faceCardImageSizeToBoundsSize))
             }
         } else {
