@@ -11,9 +11,12 @@ import UIKit
 @IBDesignable
 class PlayingCardView: UIView {
     
-    var rank = 11 { didSet { setNeedsDisplay(); setNeedsLayout() }}
-    var suit = "♥️" { didSet { setNeedsDisplay(); setNeedsLayout() }}
-    var isFaceUp = true { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    @IBInspectable
+    var rank: Int = 11 { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    @IBInspectable
+    var suit: String = "♥️" { didSet { setNeedsDisplay(); setNeedsLayout() }}
+    @IBInspectable
+    var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout() }}
     
     private var corneredString: NSAttributedString {
         return centeredAttributedString(string: rankString + "\n" + suit, fontSize: cornerFontSize)

@@ -26,6 +26,11 @@
                                     <constraint firstAttribute="width" secondItem="mPP-le-n4Y" secondAttribute="height" multiplier="5:8" id="4hB-ig-olf"/>
                                     <constraint firstAttribute="width" priority="750" constant="800" id="Odj-kg-nkW"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
