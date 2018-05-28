@@ -9,5 +9,10 @@
 import UIKit
 
 class PlayingCardView: UIView {
-
+    
+    override func draw(_ rect: CGRect) {
+        let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16.0)
+        UIColor.white.setFill()
+        roundedRect.fill()
+    }
 }
